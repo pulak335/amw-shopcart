@@ -2,16 +2,29 @@ import React from 'react';
 import './Cart.css';
 
 const Cart = (props) => {
-    const {cart} = props;
+    const { cart } = props;
+    
+    let totalQuantity = 0;
     let totalPrice = 0;
     for (const product of cart) {
-        totalPrice = totalPrice + product.price;
+        if (!product.quantity) {
+            product.quantity = 1;
+        }
+        totalPrice = totalPrice + product.price * product.quantity;
+        totalQuantity = totalQuantity + product.quantity;
     }
+    const shipping = totalPrice > 0 ? 15 : 0;
+    const tax = (totalPrice + shipping) * 0.10;
+    const grandPrice = totalPrice + shipping + tax;
+
     return (
         <div>
             <h2>Order Summary</h2>
-            <h5>Items ordered:{cart.length}</h5>
-            <h4>Total:$ { totalPrice }</h4>
+            <h5>Items ordered:{totalQuantity}</h5>
+            <h3>Total:$ { totalPrice }</h3>
+            <h4>Shipping :$ { shipping }</h4>
+            <h4>Tax :$ { tax }</h4>
+            <h3 style={{color: 'red'}}> Grand Total:$ { grandPrice }</h3>
         </div>
     );
 };

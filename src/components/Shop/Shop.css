@@ -1,3 +1,13 @@
+.searchBox{
+    background-color:#1b1a1ade;
+    text-align:center;
+    padding:10px;
+}
+.searchBox input{
+    padding:10px;
+    width:70%;
+}
+
 .shop-container{
     display:grid;
     grid-template-columns: 3fr 1fr;
@@ -7,8 +17,8 @@
 }
 .card-container{
     position: fixed;
-    margin-left:1050px;
-    padding: 40px;
+    margin-left:1020px;
+    padding: 15px;
     border: 1px solid #999898;
-    text-align: center;
+    text-align: left;
 }
